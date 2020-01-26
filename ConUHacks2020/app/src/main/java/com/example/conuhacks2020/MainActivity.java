@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText userNameEditText = (EditText) findViewById(R.id.UsernameEditText);
+                EditText userNameEditText = (EditText) findViewById(R.id.UsernameEditText); // check the view on the XML for element on screen with same ID
                 EditText passwordEditText = (EditText) findViewById(R.id.PwEditText);
 
                 String user = userNameEditText.getText().toString();

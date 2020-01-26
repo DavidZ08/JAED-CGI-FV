@@ -1,12 +1,13 @@
 package com.example.conuhacks2020;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
-
+import com.google.android.gms.tasks.OnCompleteListener;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -15,37 +16,74 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.Source;
+import com.google.firestore.v1beta1.StructuredQuery;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static java.sql.DriverManager.println;
 
 
 public class SwipingActivity extends AppCompatActivity {
 
     private ArrayList<String> al;
     private ArrayAdapter<String> arrayAdapter;
+    private static final String TAG = "MainActivity";
     private int i;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_swiping);
-
-
-
         al = new ArrayList<>();
-        al.add("Volunt. Event 1");
-        al.add("Volunt. Event 2");
-        al.add("Volunt. Event 3");
-        al.add("Volunt. Event 4");
-        al.add("Volunt. Event 5");
-        al.add("Volunt. Event 6");
-        al.add("Volunt. Event 7");
-        al.add("Volunt. Event 8"); // you can add more events, as long as you add them to the array list
 
         arrayAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.helloText, al );
 
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference docRef = db.collection("project").document(
+                "zo5GLB81bhp5xZ5ZPwz3 ");
+
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                if (task.isSuccessful()) {
+                    Toast.makeText(SwipingActivity.this, "it exist",Toast.LENGTH_SHORT).show();
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+
+                           al.add(document.getString("name").toString());
+                            println(document.getString("name").toString());
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+
+        });
+        al.add("Hello");
+        al.add("World");
+        al.add("WHY");
+        al.add("DONT");
+        al.add("YOU");
+        al.add("WORKKKKKK");
+
+        setContentView(R.layout.activity_swiping);
         SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
         flingContainer.setAdapter(arrayAdapter);
@@ -83,19 +121,17 @@ public class SwipingActivity extends AppCompatActivity {
 
             @Override
             public void onScroll(float scrollProgressPercent) {
-               // View view = flingContainer.getSelectedView();
+                // View view = flingContainer.getSelectedView();
                 //view.findViewById(R.id.item_swipe_right_indicator).setAlpha(scrollProgressPercent < 0 ? -scrollProgressPercent : 0);
                 //view.findViewById(R.id.item_swipe_left_indicator).setAlpha(scrollProgressPercent > 0 ? scrollProgressPercent : 0);
             }
         });
 
+        super.onCreate(savedInstanceState);
 
 
 
 
 
-
-
-
-}
+    }
 }

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1070053375687",
+    "firebase_url": "https://jade-cgi.firebaseio.com",
+    "project_id": "jade-cgi",
+    "storage_bucket": "jade-cgi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070053375687:android:2bae0c85de5f6e3ab148e2",
+        "android_client_info": {
+          "package_name": "com.example.conuhacks2020"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070053375687-11bnoilsnfd3e384cvi6rji6qv9nmhrc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.conuhacks2020",
+            "certificate_hash": "26883b1aef81617df6f996d438288235d4849e97"
+          }
+        },
+        {
+          "client_id": "1070053375687-li8nos5hg0edfpcmbb7numdffrpkr50d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRNPrtpLyZzn-iBPaNGiNfpmGrhH_QarE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070053375687-li8nos5hg0edfpcmbb7numdffrpkr50d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
