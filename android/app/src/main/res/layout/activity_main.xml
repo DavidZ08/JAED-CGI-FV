@@ -44,4 +44,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.822" />
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="8"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="Jade"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="70sp"
+        app:layout_constraintBottom_toTopOf="@+id/UsernameEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
